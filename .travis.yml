@@ -47,7 +47,7 @@ jobs:
       - |
         if (( $DOCS_ONLY != 0 )); then
           make .init .generate_files # Force rereqs to execute only once
-          make images-all svcat-all --jobs 2 --output-sync
+          make images-all svcat-all --jobs 2
         fi
       env: XBUILD=true
     # Doc Site svc-cat.io
