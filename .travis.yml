@@ -9,9 +9,6 @@ cache:
   directories:
     # ${GOPATH}/pkg is mounted in DOCKER_CMD in Makefile
     - .pkg
-env:
-  global:
-    - MAKEFLAGS="-j 2"
 stages:
   - test
   - name: deploy
@@ -49,7 +46,8 @@ jobs:
       script:
       - |
         if (( $DOCS_ONLY != 0 )); then
-          make images-all svcat-all
+          make .init .generate_files # Force rereqs to execute only once
+          make images-all svcat-all --jobs 2 --output-sync
         fi
       env: XBUILD=true
     # Doc Site svc-cat.io
