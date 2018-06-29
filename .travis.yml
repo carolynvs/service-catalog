@@ -11,7 +11,7 @@ cache:
     - .pkg
 env:
   global:
-    - REGISTRY=carolynvs/
+    - REGISTRY=quay.io/kubernetes-service-catalog/
 stages:
   - test
   - name: deploy
