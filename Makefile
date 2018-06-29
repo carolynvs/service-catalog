@@ -204,10 +204,10 @@ $(BINDIR):
 .scBuildImage: build/build-image/Dockerfile
 ifneq ($(SCBUILDIMAGE_CACHE),)
 	# Load docker cache
-	docker pull $(SCBUILDIMAGE_CACHE)
+	#docker pull $(SCBUILDIMAGE_CACHE)
 endif
 	sed "s/GO_VERSION/$(GO_VERSION)/g" < build/build-image/Dockerfile | \
-	  docker build $(SCBUILDIMAGE_CACHE_FROM) -t scbuildimage -f - .
+	  docker build -t scbuildimage -f - .
 	touch $@
 
 .PHONY:
