@@ -9,6 +9,9 @@ cache:
   directories:
     # ${GOPATH}/pkg is mounted in DOCKER_CMD in Makefile
     - .pkg
+env:
+  global:
+    - REGISTRY=quay.io/kubernetes-service-catalog/
 stages:
   - test
   - name: deploy
