@@ -9,6 +9,9 @@ cache:
   directories:
     # ${GOPATH}/pkg is mounted in DOCKER_CMD in Makefile
     - .pkg
+env:
+  global:
+    - REGISTRY=carolynvs/
 stages:
   - test
   - name: deploy
