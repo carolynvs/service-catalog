@@ -40,7 +40,7 @@ BUILD_LDFLAGS  = $(shell build/version.sh $(ROOT) $(SC_PKG))
 GIT_BRANCH    ?= $(shell git rev-parse --abbrev-ref HEAD)
 
 # Cache the layers of the scbuildimage so that it's faster to build
-SCBUILDIMAGE_CACHE ?=
+SCBUILDIMAGE_CACHE ?= $(REGISTRY)/scbuildimage:$(MUTABLE_TAG)
 ifneq ($(SCBUILDIMAGE_CACHE),)
 SCBUILDIMAGE_CACHE_FROM = --cache-from $(SCBUILDIMAGE_CACHE)
 endif
