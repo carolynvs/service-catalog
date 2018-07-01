@@ -58,7 +58,7 @@ jobs:
         provider: script
         script: contrib/travis/deploy.sh
         on:
-          repo: kubernetes-incubator/service-catalog
+          repo: carolynvs/service-catalog
           all_branches: true
     - stage: push-chart
       script:
