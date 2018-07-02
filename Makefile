@@ -63,7 +63,6 @@ STAT           = stat -c '%Y %n'
 endif
 
 TYPES_FILES    = $(shell find pkg/apis -name types.go)
-GO_VERSION    ?= 1.9
 
 ALL_ARCH=amd64 arm arm64 ppc64le s390x
 ALL_CLIENT_PLATFORM=darwin linux windows
@@ -206,8 +205,7 @@ ifneq ($(SCBUILDIMAGE_CACHE),)
 	# Load docker cache
 	docker pull $(SCBUILDIMAGE_CACHE)
 endif
-	sed "s/GO_VERSION/$(GO_VERSION)/g" < build/build-image/Dockerfile | \
-	  docker build $(SCBUILDIMAGE_CACHE_FROM) -t scbuildimage -f - .
+	docker build --pull $(SCBUILDIMAGE_CACHE_FROM) -t scbuildimage -f build/build-image/Dockerfile .
 	touch $@
 
 .PHONY:
