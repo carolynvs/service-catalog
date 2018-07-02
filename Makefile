@@ -211,7 +211,7 @@ endif
 	touch $@
 
 .PHONY:
-.scBuildImage-push:
+.scBuildImage-push: .scBuildImage
 ifneq ($(SCBUILDIMAGE_CACHE),)
 	docker push $(SCBUILDIMAGE_CACHE)
 else
